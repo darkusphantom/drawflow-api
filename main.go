@@ -11,81 +11,12 @@ import (
 
   "github.com/gorilla/mux"
   "github.com/gorilla/handlers"
-
-  //"models/node.go"
 )
-
-// Structs
-type NodeO struct {
-  Node string `json:node`
-  Output string `json:output`
-}
-
-type Connection struct {
-  Connections allConnections `json:connection`
-}
-
-type Outputs struct {
-  Output_1 Connection `json:output_1`
-  Output_2 Connection `json:output_2`
-}
-
-type Program struct {
-  ID int `json:id`
-  Name string `json:name`
-  Data string `json:data`
-  Class string `json:class`
-  Html string `json:html`
-  Typenode string `json:typenode`
-  Inputs string "json:inputs"
-  Outputs Outputs "json:outputs"
-  Pos_x int `json:pos_x`
-  Pos_y int `json:pos_y`
-  Input int `json:input`
-}
-
-// Types
-type allNodes []Program
-type allConnections []NodeO
-
-// Example
-var node = allConnections {
-  {
-    Node: "2",
-    Output: "input_1",
-  },
-}
-
-var connections = Connection {
-  Connections: node,
-}
-
-var outputs = Outputs {
-  Output_1: connections, //"Doriem",
-  Output_2: connections, //"maeno",
-}
-
-var nodes = allNodes {
-  {
-    ID: 1,
-    Name: "Value",
-    Data: "{}",
-    Class: "Value",
-    Html: "Value",
-    Typenode: "vue",
-    Inputs: "{}",
-    Outputs: outputs,
-    Pos_x: 329,
-    Pos_y: 257,
-    Input: 5,
-  },
-}
 
 // Methods
 func getNodes(w http.ResponseWriter, r *http.Request) {
   w.Header().Set("Content-type", "application/json"); //Indica a la tarea que es un formato json
-  //Allow CORS here By * or specific origin
-  w.Header().Set("Access-Control-Allow-Origin", "*")
+  w.Header().Set("Access-Control-Allow-Origin", "*") //Allow CORS here By * or specific origin
   w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
   json.NewEncoder(w).Encode(nodes)
