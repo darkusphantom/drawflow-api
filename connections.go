@@ -1,8 +1,8 @@
 // Package main provides ...
 package main
 
-type nodesIn []NodeOutput
-type nodesOut []NodeInput
+type nodesIn []NodeInput
+type nodesOut []NodeOutput
 
 type NodeInput struct {
   Node string `json:node`
